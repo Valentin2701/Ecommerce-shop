@@ -1,0 +1,24 @@
+.product-grid {
+    display: flex;
+    max-width: 375px;
+    flex-direction: column;
+    font-family: Ubuntu, sans-serif;
+    color: rgba(80, 93, 104, 1);
+    text-align: center;
+  }
+  .product-container {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    padding: 40px 33px 12px;
+  }
+  .product-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  .product-row-spacing {
+    margin-top: 19px;
+  }

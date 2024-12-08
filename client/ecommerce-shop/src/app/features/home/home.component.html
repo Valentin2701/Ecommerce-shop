@@ -1,0 +1,115 @@
+<div
+      class="flex overflow-hidden flex-col mx-auto w-full bg-white max-w-[480px]"
+      role="main"
+    >
+      <form
+        class="flex gap-5 justify-between self-center px-5 py-3 mt-8 w-full text-sm font-extralight text-black rounded-xl bg-neutral-300 max-w-[339px]"
+        role="search"
+      >
+        <label for="searchInput" class="sr-only">Search products</label>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search"
+          class="bg-transparent border-none outline-none w-full"
+          aria-label="Search products"
+        />
+        <button type="submit" aria-label="Submit search">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b8156fb96251bf8b771aa408b4f2a811a295131e749fc68c4649edf12e7a53f3?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+            alt=""
+            class="object-contain shrink-0 w-5 aspect-square"
+          />
+        </button>
+      </form>
+      <div
+        class="flex gap-5 justify-between self-center mt-10 w-full text-sm tracking-wide leading-none max-w-[337px] text-stone-900"
+      >
+        <button
+          class="flex gap-3.5 p-3 bg-gray-200 rounded shadow-sm"
+          role="button"
+          tabindex="0"
+        >
+          <span>Popular Now</span>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/fff608c5a82880d13031a3aff2ca99583eaaf82e25f417f3269da32005fdb720?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+            alt=""
+            class="object-contain shrink-0 my-auto w-2.5 aspect-[2]"
+          />
+        </button>
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0aa11f475c7160528331d71d262c4d2ca82145d643047255816a07d23c3f9208?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+          alt="Filter options"
+          class="object-contain shrink-0 my-auto rounded-none aspect-square w-[38px]"
+        />
+      </div>
+      <app-products-list />
+      <img
+        loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/2ff1de3560023b05535b09f543720ecc327d122d0ff7c26546c7f9f5583c7a7e?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+        alt=""
+        class="object-contain self-center mt-5 w-16 aspect-[6.41]"
+      />
+      <section class="flex flex-col px-4 mt-24 w-full text-xs text-black">
+        <div
+          class="flex shrink-0 max-w-full bg-neutral-300 h-[146px] w-[339px]"
+          role="presentation"
+        ></div>
+        <h2 class="self-start mt-16 font-bold text-stone-500">
+          CHECK OUT OUR NEWEST COLLECTION
+        </h2>
+        <div
+          class="flex shrink-0 mt-6 max-w-full bg-white h-[452px] w-[337px]"
+          role="presentation"
+        ></div>
+        <h3 class="self-start mt-8 font-semibold uppercase">Get Latest Deals</h3>
+        <form class="flex mt-4 text-sm font-light">
+          <label for="emailAddress" class="sr-only">Email Address</label>
+          <input
+            type="email"
+            id="emailAddress"
+            placeholder="Email Address"
+            class="p-4 bg-neutral-300"
+            required
+          />
+          <button
+            type="submit"
+            class="flex shrink-0 bg-stone-500 h-[39px] w-[115px] items-center justify-center text-white"
+          >
+            Subscribe
+          </button>
+        </form>
+      </section>
+      <footer
+        class="flex relative flex-col items-center px-20 pt-16 pb-56 mt-20 w-full text-center text-white bg-blend-normal aspect-[0.794]"
+        role="contentinfo"
+      >
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf4087d39d3f505eb590f7578194f33f63e35887a1d60a15da23dd3b177e3caf?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+          alt=""
+          class="object-cover absolute inset-0 size-full"
+        />
+        <div class="flex relative flex-col mb-0 max-w-full w-[169px]">
+          <h2 class="self-center text-lg font-bold leading-8">Contact us</h2>
+          <address class="mt-5 text-sm leading-6 not-italic">
+            385 Noah Place Suite 878
+            <br />
+            <a href="mailto:info@form.com" class="hover:underline">
+              info form.com
+            </a>
+            <br />
+            <a href="tel:877-255-7945" class="hover:underline">877-255-7945</a>
+          </address>
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3009e53ebe5b93411a6b4d5a59947db7801e726057530551c44b68c0489856b9?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+            alt="Social media links"
+            class="object-contain mt-8 w-full aspect-[4.83]"
+          />
+        </div>
+      </footer>
+    </div>
