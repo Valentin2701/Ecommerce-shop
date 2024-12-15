@@ -10,10 +10,6 @@ export class AppComponent {
 
   sidebarOpen = true;
 
-  test = setInterval(() => {
-    console.log(this.sidebarOpen)
-  }, 1000);
-
   toggleSidebar(){
     this.sidebarOpen = !this.sidebarOpen;
   }
