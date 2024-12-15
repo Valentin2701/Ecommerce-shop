@@ -1,19 +1,27 @@
 import express from "express";
 import mongoose from "mongoose";
-import { DBURL, PORT } from "./env/env.js";
+import { configExpress } from "./configs/configExpress.js";
+import { router as routes } from "./routes.js";
+import { authMiddleware } from "./middlewares/authMiddleware.js";
+import { errorMiddleware } from "./middlewares/errorMiddleware.js";
+import { PORT, DBURL } from "./env/env.js";
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send("Hello, Home!");
-})
+configExpress(app);
+
+app.use(authMiddleware);
+
+app.use(routes);
+
+app.use(errorMiddleware);
 
 mongoose
   .connect(DBURL)
   .then(() => {
     console.log("DB connected!");
-    app.listen(5000, () => {
-      console.log(`Server is listening on port ${PORT}`);
-    });
+    app.listen(PORT, () =>
+      console.log(`Server is listening on port ${PORT}...`)
+    );
   })
-  .catch((err) => console.log("DB not connected!", err));
+  .catch((err) => console.log("Failed connecting DB", err));
