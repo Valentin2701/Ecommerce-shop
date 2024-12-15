@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
 import { HomeModule } from './home/home.module';
+import { ProductPageModule } from './product-page/product-page.module';
 
 
 
@@ -10,6 +10,6 @@ import { HomeModule } from './home/home.module';
   imports: [
     CommonModule
   ],
-  exports: [HomeModule]
+  exports: [HomeModule, ProductPageModule]
 })
 export class FeaturesModule { }

@@ -1,0 +1,129 @@
+.product-container {
+    display: flex;
+    max-width: 700px;
+    width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  .product-wrapper {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    padding: 25px 0;
+  }
+  .product-main-image {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    align-self: stretch;
+  }
+  .thumbnail-gallery {
+    display: flex;
+    margin-top: 20px;
+    gap: 2px;
+  }
+  .thumbnail {
+    aspect-ratio: 1.11;
+    object-fit: contain;
+    object-position: center;
+    width: 100px;
+  }
+  .product-title {
+    color: rgba(0, 0, 0, 1);
+    margin-top: 10px;
+    font: 300 28px Inter, sans-serif;
+  }
+  .rating {
+    aspect-ratio: 6.33;
+    object-fit: contain;
+    object-position: center;
+    width: 200px;
+    max-width: 100%;
+  }
+  .product-code {
+    color: rgba(104, 104, 104, 1);
+    margin: 9px 0;
+    font: 400 25px Inter, sans-serif;
+  }
+  .brand {
+    color: rgba(104, 104, 104, 1);
+    font: 400 25px Inter, sans-serif;
+  }
+  .price {
+    color: rgba(80, 93, 104, 1);
+    margin-top: 11px;
+    font: 700 48px/78px Inter, sans-serif;
+  }
+  .product-description {
+    color: rgba(161, 174, 183, 1);
+    margin-top: 37px;
+    font: 400 20px/35px Inter, sans-serif;
+  }
+  .size-chart {
+    aspect-ratio: 10.64;
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    align-self: stretch;
+    margin-top: 150px;
+  }
+  .buy-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-self: center;
+    aspect-ratio: 5;
+    margin-top: 36px;
+    width: 350px;
+    max-width: 100%;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    text-transform: uppercase;
+    padding: 14px 70px;
+    font: 400 24px Ubuntu, sans-serif;
+  }
+  .buy-button-bg {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .buy-button-text {
+    position: relative;
+  }
+  .wishlist-wrapper {
+    align-self: center;
+    display: flex;
+    margin-top: 31px;
+    width: 300px;
+    max-width: 100%;
+    gap: 16px;
+    color: rgba(161, 174, 183, 1);
+    font: 400 30px Ubuntu, sans-serif;
+  }
+  .wishlist-icon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 40px;
+  }
+  .wishlist-text {
+    flex-grow: 1;
+    width: 200px;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
