@@ -1,11 +1,17 @@
 <div class="sidebar">
     <div class="sidebar-header">
-      <h2>My App</h2>
+      <h2>ShopShere</h2>
     </div>
     <ul class="nav-list">
-      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/about">About</a></li>
-      <li><a routerLink="/services">Services</a></li>
-      <li><a routerLink="/contact">Contact</a></li>
+      <ng-container *ngIf="userService.getUser()">
+      <li><a routerLink="/products/create">Add product</a></li>
+      <li (click)="userService.logout()"><a>Logout</a></li>
+      </ng-container>
+      <ng-container *ngIf="!userService.getUser()">
+      <li><a routerLink="/register">Register</a></li>
+      <li><a routerLink="/login">Login</a></li>
+      </ng-container>
     </ul>
   </div>
