@@ -1,0 +1,42 @@
+<form class="registration-form" [formGroup]="form" (ngSubmit)="login()">
+    <label for="email" class="input-label">E-mail</label>
+    <input
+      type="email"
+      id="email"
+      class="input-field"
+      required
+      aria-label="Email address"
+      formControlName="email"
+    />
+      <label for="password" class="input-label">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="input-field"
+        required
+        aria-label="Password"
+        formControlName="password"
+      />
+  
+    <div class="navigation-controls">
+      <button type="submit" class="next-button" aria-label="Proceed to next step">
+        <span>Login</span>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/55402a2be1c6d53ccfa401b0e5bde4ce71ab3fc8982b85e7a65be1b19479f81b?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+          class="nav-icon"
+          alt=""
+          role="presentation"
+        />
+      </button>
+    </div>
+  </form>
+  <button type="button" class="back-button" aria-label="Go back" routerLink="/">
+    <img
+      src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f80417016b6d0fddf685145832a8adbec0952182b815bc1e6933c279121a21e?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+      class="nav-icon"
+      alt=""
+      role="presentation"
+    />
+    <span>Back</span>
+  </button>
+  
