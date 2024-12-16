@@ -1,35 +1,44 @@
 import express from "express";
 import * as authService from "../services/authService.js";
-import { isAuth } from "../middlewares/authMiddleware.js";
+import { isAuth, isGuest } from "../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/register", async (req, res, next) => {
+router.post("/register", isGuest, async (req, res, next) => {
   const userData = req.body;
   try {
     if (userData.password !== userData.rePass)
-      throw new Error("Паролите не съвпадат!");
+      throw new Error("Passwords don't match!");
 
     const result = await authService.register({
-      username: userData.username,
-      email: userData.email,
-      password: userData.password,
+      ...userData,
+      password: userData.passGroup.password,
     });
 
-    res.cookie("auth", result.token);
-    res.json({user: user, message: "Registered successfully!"});
+    res.cookie("auth", result.token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "Strict",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+    res.json({ user: result.user, message: "Registered successfully!" });
   } catch (err) {
     return next(err);
   }
 });
 
-router.post("/login", async (req, res, next) => {
+router.post("/login", isGuest, async (req, res, next) => {
   const userData = req.body;
   try {
     const result = await authService.login(userData);
 
-    res.cookie("auth", result.token);
-    res.json({user: user, message: "Logged in succesfully"});
+    res.cookie("auth", result.token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "Strict",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+    res.json({ user: result.user, message: "Logged in succesfully" });
   } catch (err) {
     return next(err);
   }
@@ -38,6 +47,13 @@ router.post("/login", async (req, res, next) => {
 router.post("/logout", isAuth, (req, res) => {
   res.clearCookie("auth");
   res.end();
+});
+
+router.get("/user", async (req, res) => {
+  const userId = req.user?._id;
+  const user = await authService.getUser(userId);
+  if (!user) return res.status(404).json({ message: "User not found" });
+  res.json(user);
 });
 
 export { router };

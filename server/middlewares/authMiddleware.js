@@ -21,3 +21,8 @@ export const isAuth = (req, res, next) => {
   if (!req.user) return res.status(402);
   next();
 };
+
+export const isGuest = (req, res, next) => {
+  if(req.user) return res.status(402);
+  next();
+}

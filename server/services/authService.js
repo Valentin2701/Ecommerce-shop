@@ -7,7 +7,7 @@ export const register = async (userData) => {
   const user = await User.create(userData);
 
   const token = await jwt.sign(
-    { _id: user._id, username: user.username, email: user.email },
+    { _id: user?._id, firstName: user.firstName, lastName: user.lastName, email: user.email },
     SECRET
   );
 
@@ -23,9 +23,11 @@ export const login = async (userData) => {
   if (!isValid) throw new Error("Email or password incorrect!");
   
   const token = await jwt.sign(
-    { _id: user._id, username: user.username, email: user.email },
+    { _id: user?._id, firstName: user.firstName, lastName: user.lastName, email: user.email },
     SECRET
   );
 
   return { user, token };
 };
+
+export const getUser = (id) => User.findById(id);
