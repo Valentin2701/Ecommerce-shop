@@ -1,12 +1,17 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { FeaturesModule } from './features/features.module';
 import { HttpClientModule } from "@angular/common/http"
+import { AppInterceptorProvider } from './core/interceptors/app.interceptor';
+import { UserService } from './core/services/user.service';
+
+export function initializeUserFactory(userService: UserService): () => Promise<void> {
+  return () => userService.initializeUser();
+}
 
 @NgModule({
   declarations: [
@@ -18,9 +23,14 @@ import { HttpClientModule } from "@angular/common/http"
     CoreModule,
     SharedModule,
     FeaturesModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [AppInterceptorProvider, {
+    provide: APP_INITIALIZER,
+    useFactory: initializeUserFactory,
+    deps: [UserService],
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

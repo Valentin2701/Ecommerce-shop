@@ -12,14 +12,26 @@ import { ErrorService } from './error.service';
 export class UserService {
   user$$ = new BehaviorSubject<User | null>(null);
   user$: Observable<User | null> = this.user$$.asObservable();
-  user: User | null = null;
 
-  get isLoggedIn(): boolean{
-    return !!this.user
+  constructor(private errorService: ErrorService, private http: HttpClient) { }
+
+  initializeUser(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.http.get('/api/user').subscribe({
+        next: (user: any) => {
+          this.user$$.next(user);
+          resolve();
+        },
+        error: () => {
+          this.user$$.next(null);
+          resolve();
+        },
+      });
+    });
   }
 
-  constructor(private errorService: ErrorService, private http: HttpClient) { 
-    this.user$.subscribe((data) => this.user = data);
+  getUser(){
+    return this.user$$.value
   }
 
   register(userData: any) {
@@ -44,9 +56,5 @@ export class UserService {
     return this.http.post<void>("/api/logout", {}).pipe(tap(() => {
       this.user$$.next(null);
     }));
-  }
-
-  ngOnDestroy(): void {
-    this.user$$.unsubscribe();
   }
 }
