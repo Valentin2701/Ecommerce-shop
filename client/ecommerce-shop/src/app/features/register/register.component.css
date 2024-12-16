@@ -1,0 +1,96 @@
+.registration-form {
+    border-radius: 0;
+    display: flex;
+    max-width: 550px;
+    padding: 0 0 7px;
+    flex-direction: column;
+    font: 400 12px Inter, sans-serif;
+    margin-left: 25%;
+  }
+  .input-label {
+    color: rgb(34, 34, 34);
+    align-self: start;
+    margin: 12px 0 0 15px;
+  }
+  .input-field {
+    border-radius: 50px;
+    background-color: rgb(104, 104, 104);
+    display: flex;
+    min-height: 32px;
+    margin: 10px 0 0;
+    width: 100%;
+  }
+  .country-select {
+    aspect-ratio: 10.42;
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    margin: 10px 0 0;
+  }
+  .address-container {
+    display: flex;
+    margin: 10px 0 0;
+    width: 100%;
+    flex-direction: column;
+    color: rgb(34, 34, 34);
+    white-space: nowrap;
+    padding: 0 1px;
+  }
+  .address-field {
+    border-radius: 10px;
+    background-color: rgb(104, 104, 104);
+    display: flex;
+    height: 63px;
+  }
+  .zipcode-field {
+    border-radius: 50px;
+    background-color: rgb(104, 104, 104);
+    display: flex;
+    margin: 10px 0 0;
+    width: 138px;
+    height: 32px;
+  }
+  .navigation-controls {
+    align-self: center;
+    display: flex;
+    margin: 54px 0 0;
+    width: 100%;
+    max-width: 241px;
+    gap: 8px;
+  }
+  .back-button {
+    border-radius: 50px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    color: rgb(104, 104, 104);
+    white-space: nowrap;
+    padding: 8px 15px 0;
+    border: 2px solid rgb(104, 104, 104);
+  }
+  .nav-icon {
+    aspect-ratio: 1.67;
+    object-fit: contain;
+    object-position: center;
+    width: 10px;
+    margin: auto 0;
+  }
+  .next-button {
+    border-radius: 50px;
+    background-color: rgb(104, 104, 104);
+    display: flex;
+    align-items: flex-start;
+    gap: 40px 46px;
+    color: rgb(255, 255, 255);
+    padding: 8px 21px 0;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }

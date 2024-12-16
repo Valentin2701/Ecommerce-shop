@@ -1,0 +1,127 @@
+<form class="registration-form" [formGroup]="form" (ngSubmit)="register()">
+  <label for="firstName" class="input-label">First name</label>
+  <input
+    type="text"
+    id="firstName"
+    class="input-field"
+    required
+    aria-label="First name"
+    formControlName="firstName"
+  />
+
+  <label for="lastName" class="input-label">Last name</label>
+  <input
+    type="text"
+    id="lastName"
+    class="input-field"
+    required
+    aria-label="Last name"
+    formControlName="lastName"
+  />
+
+  <label for="phoneNumber" class="input-label">Phone number</label>
+  <input
+    type="tel"
+    id="phoneNumber"
+    class="input-field"
+    required
+    aria-label="Phone number"
+    formControlName="number"
+  />
+
+  <label for="email" class="input-label">E-mail</label>
+  <input
+    type="email"
+    id="email"
+    class="input-field"
+    required
+    aria-label="Email address"
+    formControlName="email"
+  />
+
+  <label for="country" class="input-label">Country</label>
+  <input
+    type="text"
+    id="country"
+    class="input-field"
+    required
+    aria-label="Country"
+    formControlName="country"
+  />
+
+  <label for="city" class="input-label">City</label>
+  <div class="address-container">
+    <input
+      type="text"
+      id="city"
+      class="input-field"
+      required
+      aria-label="City"
+      formControlName="city"
+    />
+    <label for="address" class="input-label">Address</label>
+  </div>
+
+  <div class="address-container">
+    <textarea
+      id="address"
+      class="address-field"
+      required
+      aria-label="Street address"
+      formControlName="address"
+    ></textarea>
+    <label for="zipcode" class="input-label">Zipcode</label>
+  </div>
+
+  <input
+    type="text"
+    id="zipcode"
+    class="zipcode-field"
+    required
+    aria-label="Zipcode"
+    formControlName="ZIP"
+  />
+
+  <ng-container formGroupName="passGroup">
+    <label for="password" class="input-label">Password</label>
+    <input
+      type="password"
+      id="password"
+      class="input-field"
+      required
+      aria-label="Password"
+      formControlName="password"
+    />
+
+    <label for="rePass" class="input-label">Repeat password</label>
+    <input
+      type="password"
+      id="rePass"
+      class="input-field"
+      required
+      aria-label="Repeat password"
+      formControlName="rePass"
+    />
+  </ng-container>
+
+  <div class="navigation-controls">
+    <button type="submit" class="next-button" aria-label="Proceed to next step">
+      <span>Register</span>
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/55402a2be1c6d53ccfa401b0e5bde4ce71ab3fc8982b85e7a65be1b19479f81b?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+        class="nav-icon"
+        alt=""
+        role="presentation"
+      />
+    </button>
+  </div>
+</form>
+<button type="button" class="back-button" aria-label="Go back" routerLink="/">
+  <img
+    src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f80417016b6d0fddf685145832a8adbec0952182b815bc1e6933c279121a21e?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+    class="nav-icon"
+    alt=""
+    role="presentation"
+  />
+  <span>Back</span>
+</button>
