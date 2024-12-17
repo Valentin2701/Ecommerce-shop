@@ -52,7 +52,6 @@ router.post("/logout", isAuth, (req, res) => {
 router.get("/user", async (req, res) => {
   const userId = req.user?._id;
   const user = await authService.getUser(userId);
-  if (!user) return res.status(404).json({ message: "User not found" });
   res.json(user);
 });
 

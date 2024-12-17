@@ -7,12 +7,16 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ErrorService {
   error$$ = new BehaviorSubject<string | null>(null);
   error$: Observable<string | null> = this.error$$.asObservable();
-  error: string | null = null;
 
-  constructor() {
-    this.error$.subscribe(err => {
-      this.error = err;
-      setTimeout(() => this.error = null, 3000);
-    })
+  constructor() {}
+
+  setError(message: string): void {
+    this.error$$.next(message);
+    setTimeout(() => this.clearError(), 4000);
+  }
+
+  // Method to clear the current error
+  clearError(): void {
+    this.error$$.next(null);
   }
 }

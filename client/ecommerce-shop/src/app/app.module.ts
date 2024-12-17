@@ -8,6 +8,7 @@ import { FeaturesModule } from './features/features.module';
 import { HttpClientModule } from "@angular/common/http"
 import { AppInterceptorProvider } from './core/interceptors/app.interceptor';
 import { UserService } from './core/services/user.service';
+import { GlobalErrorInterceptorProvider } from './core/interceptors/global-error.interceptor';
 
 export function initializeUserFactory(userService: UserService): () => Promise<void> {
   return () => userService.initializeUser();
@@ -25,7 +26,7 @@ export function initializeUserFactory(userService: UserService): () => Promise<v
     FeaturesModule,
     HttpClientModule,
   ],
-  providers: [AppInterceptorProvider, {
+  providers: [AppInterceptorProvider, GlobalErrorInterceptorProvider, {
     provide: APP_INITIALIZER,
     useFactory: initializeUserFactory,
     deps: [UserService],

@@ -14,7 +14,7 @@ export class UserService {
   user$$ = new BehaviorSubject<User | null>(null);
   user$: Observable<User | null> = this.user$$.asObservable();
 
-  constructor(private errorService: ErrorService, private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   initializeUser(): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -38,19 +38,13 @@ export class UserService {
   register(userData: any) {
     return this.http.post<APIResponse>("/api/register", userData).pipe(errorGuard(), tap(response => {
       this.user$$.next(response.user);
-    }), catchError((message) => {
-      this.errorService.error$$.next(message);
-      return throwError(() => message);
     }));
   }
 
   login(userData: any) {
     return this.http.post<APIResponse>("/api/login", userData).pipe(errorGuard(), tap(response => {
       this.user$$.next(response.user);
-    }), catchError((message) => {
-      this.errorService.error$$.next(message);
-      return throwError(() => message);
-    }))
+    }));
   }
 
   logout() {
