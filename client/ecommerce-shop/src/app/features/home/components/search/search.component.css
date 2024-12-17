@@ -21,10 +21,6 @@
     font: 200 13px Inter, sans-serif;
   }
   
-  .search-text {
-    margin: auto 0;
-  }
-  
   .search-icon {
     aspect-ratio: 1;
     object-fit: contain;
@@ -82,4 +78,19 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+  }
+
+  .search-text {
+    background: none;
+    border: none;
+    outline: none;
+    color: inherit;
+    font: inherit;
+    margin: auto 0;
+    padding-right: 60%;
+  }
+  
+  .search-text::placeholder {
+    color: inherit;
+    opacity: 1;
   }
