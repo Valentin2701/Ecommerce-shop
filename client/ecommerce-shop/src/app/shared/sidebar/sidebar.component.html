@@ -7,7 +7,7 @@
       <li><a routerLink="/about">About</a></li>
       <ng-container *ngIf="userService.getUser()">
       <li><a routerLink="/products/create">Add product</a></li>
-      <li (click)="userService.logout()"><a>Logout</a></li>
+      <li (click)="logout()"><a>Logout</a></li>
       </ng-container>
       <ng-container *ngIf="!userService.getUser()">
       <li><a routerLink="/register">Register</a></li>

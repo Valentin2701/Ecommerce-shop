@@ -17,13 +17,13 @@
     width: 100%;
     align-items: center;
     padding: 67px 75px 117px;
-    height: 600px;
+    height: 400px;
   }
   
   .background-image {
     position: absolute;
     inset: 0;
-    height: 780px;
+    height: 585px;
     width: 100%;
     object-fit: cover;
     object-position: center;

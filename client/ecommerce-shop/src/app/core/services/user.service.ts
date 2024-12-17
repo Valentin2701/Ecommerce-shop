@@ -5,6 +5,7 @@ import { APIResponse } from '../types/APIResponse';
 import { HttpClient } from '@angular/common/http';
 import { errorGuard } from '../guards/error-guard.pipe';
 import { ErrorService } from './error.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class UserService {
   user$$ = new BehaviorSubject<User | null>(null);
   user$: Observable<User | null> = this.user$$.asObservable();
 
-  constructor(private errorService: ErrorService, private http: HttpClient) { }
+  constructor(private errorService: ErrorService, private http: HttpClient, private router: Router) { }
 
   initializeUser(): Promise<void> {
     return new Promise((resolve, reject) => {
@@ -55,6 +56,7 @@ export class UserService {
   logout() {
     return this.http.post<void>("/api/logout", {}).pipe(tap(() => {
       this.user$$.next(null);
+      this.router.navigate(["/"]);
     }));
   }
 }
