@@ -1,9 +1,8 @@
-import { ValidatorFn } from "@angular/forms";
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export function passwordMatchValidator(passControl: string, rePassControl: string): ValidatorFn{
-    return (control) => {
-        const pass = control.get(passControl);
-        const rePass = control.get(rePassControl);
-        return pass?.value == rePass?.value ? null : {passwordMatchValidator: true};
-    }
-}
+export const passwordMatchValidator: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+  const password = group.get('password')?.value;
+  const rePass = group.get('rePass')?.value;
+
+  return password === rePass ? null : { passwordMissmatch: true };
+};

@@ -8,6 +8,14 @@
     aria-label="First name"
     formControlName="firstName"
   />
+  <ng-container *ngIf="form.get('firstName')?.touched">
+    <p class="error" *ngIf="form.get('firstName')?.errors?.['required']">
+        First name is required!
+      </p>
+      <p class="error" *ngIf="form.get('firstName')?.errors?.['minlength']">
+        First name must be atleat 2 charcters long!
+      </p>
+</ng-container>
 
   <label for="lastName" class="input-label">Last name</label>
   <input
@@ -18,6 +26,14 @@
     aria-label="Last name"
     formControlName="lastName"
   />
+  <ng-container *ngIf="form.get('lastName')?.touched">
+    <p class="error" *ngIf="form.get('lastName')?.errors?.['required']">
+        Last name is required!
+      </p>
+      <p class="error" *ngIf="form.get('lastName')?.errors?.['minlength']">
+        Last name must be atleast 4 characters long!
+      </p>
+</ng-container>
 
   <label for="phoneNumber" class="input-label">Phone number</label>
   <input
@@ -28,6 +44,14 @@
     aria-label="Phone number"
     formControlName="number"
   />
+  <ng-container *ngIf="form.get('number')?.touched">
+    <p class="error" *ngIf="form.get('number')?.errors?.['required']">
+        Phone number is required!
+      </p>
+      <p class="error" *ngIf="form.get('number')?.errors?.['pattern']">
+        Phone number is invalid!
+      </p>
+</ng-container>
 
   <label for="email" class="input-label">E-mail</label>
   <input
@@ -38,6 +62,14 @@
     aria-label="Email address"
     formControlName="email"
   />
+  <ng-container *ngIf="form.get('email')?.touched">
+    <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+        Email is required!
+      </p>
+      <p class="error" *ngIf="form.get('email')?.errors?.['email']">
+        Email is invalid!
+      </p>
+</ng-container>
 
   <label for="country" class="input-label">Country</label>
   <input
@@ -48,6 +80,11 @@
     aria-label="Country"
     formControlName="country"
   />
+  <ng-container *ngIf="form.get('country')?.touched">
+    <p class="error" *ngIf="form.get('country')?.errors?.['required']">
+        Country is required!
+      </p>
+</ng-container>
 
   <label for="city" class="input-label">City</label>
   <div class="address-container">
@@ -59,6 +96,11 @@
       aria-label="City"
       formControlName="city"
     />
+    <ng-container *ngIf="form.get('city')?.touched">
+        <p class="error" *ngIf="form.get('city')?.errors?.['required']">
+            City is required!
+          </p>
+    </ng-container>
     <label for="address" class="input-label">Address</label>
   </div>
 
@@ -70,6 +112,11 @@
       aria-label="Street address"
       formControlName="address"
     ></textarea>
+    <ng-container *ngIf="form.get('address')?.touched">
+        <p class="error" *ngIf="form.get('address')?.errors?.['required']">
+            Address is required!
+          </p>
+    </ng-container>
     <label for="zipcode" class="input-label">Zipcode</label>
   </div>
 
@@ -81,6 +128,11 @@
     aria-label="Zipcode"
     formControlName="ZIP"
   />
+  <ng-container *ngIf="form.get('ZIP')?.touched">
+    <p class="error" *ngIf="form.get('ZIP')?.errors?.['required']">
+        ZIP code is required!
+      </p>
+</ng-container>
 
   <ng-container formGroupName="passGroup">
     <label for="password" class="input-label">Password</label>
@@ -92,6 +144,14 @@
       aria-label="Password"
       formControlName="password"
     />
+    <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+        <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">
+            Password is required!
+          </p>
+          <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']">
+            Password must be atleast 8 characters long!
+          </p>
+    </ng-container>
 
     <label for="rePass" class="input-label">Repeat password</label>
     <input
@@ -102,10 +162,18 @@
       aria-label="Repeat password"
       formControlName="rePass"
     />
+    <ng-container *ngIf="form.get('passGroup')?.get('rePass')?.touched">
+        <p class="error" *ngIf="form.get('passGroup')?.get('rePass')?.errors?.['required']">
+            Repeat password is required!
+          </p>
+          <p class="error" *ngIf="form.get('passGroup')?.errors?.['passwordMissmatch']">
+            Passwords must match!
+          </p>
+    </ng-container>
   </ng-container>
 
   <div class="navigation-controls">
-    <button type="submit" class="next-button" aria-label="Proceed to next step">
+    <button type="submit" class="next-button" aria-label="Proceed to next step" [disabled]="form.invalid">
       <span>Register</span>
       <img
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/55402a2be1c6d53ccfa401b0e5bde4ce71ab3fc8982b85e7a65be1b19479f81b?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"

@@ -21,7 +21,7 @@ export class RegisterComponent {
     }, {
       validators: [passwordMatchValidator]
     }),
-    number: ['', [Validators.required]],
+    number: ['', [Validators.required, Validators.pattern(/^\+?\d{6,}/)]],
     country: ['', [Validators.required]],
     city: ['', [Validators.required]],
     address: ['', [Validators.required]],
