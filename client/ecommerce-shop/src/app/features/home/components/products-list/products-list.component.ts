@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent {
-  products = [1, 2, 3, 4, 5, 6]
+  
 }

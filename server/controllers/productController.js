@@ -74,6 +74,18 @@ router.post("/delete/:id", isAuth, async (req, res, next) => {
   }
 });
 
+router.post("/buy/:id", isAuth, async (req, res, next) => {
+    const productId = req.params.id;
+    const userId = req.user?._id;
+    try{
+        await productService.buy(productId, userId);
+
+        res.status(200).end();
+    } catch(err){
+        next(err);
+    }
+});
+
 router.post("/search", async (req, res, next) => {
   try {
     const { search } = req.body;
