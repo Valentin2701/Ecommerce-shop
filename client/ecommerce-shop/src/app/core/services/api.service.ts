@@ -45,4 +45,12 @@ export class ApiService {
   addProductToCart(productId: string | undefined) {
     return this.http.post<void>(`${this.apiUrl}/cart`, { productId });
   }
+
+  getFromCart(){
+    return this.http.get<Product[]>(`${this.apiUrl}/cart`);
+  }
+
+  removeFromCart(productId: string){
+    return this.http.post<void>(`${this.apiUrl}/cart/remove/${productId}`, {});
+  }
 }
