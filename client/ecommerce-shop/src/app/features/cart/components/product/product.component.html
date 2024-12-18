@@ -2,30 +2,30 @@
   <div class="product-details">
     <img
       loading="lazy"
-      src="https://cdn.builder.io/api/v1/image/assets/TEMP/27c1664ba8ffee80b3a052b59582f79387f9a0bdb2b913ad11d2483f02679d30?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+      src="{{product.image}}"
       class="product-image"
-      alt="Lyle & Scott Men's Short Sleeve Camo Pocket"
+      alt="{{product.name}}"
     />
     <div class="product-info">
       <div class="product-title">
-        Lyle & Scott Men's Short Sleeve Camo Pocket
+        {{product.name}}
       </div>
-      <div class="product-brand">Brand: Revolve</div>
-      <div class="product-price">$76</div>
+      <div class="product-brand">Brand: {{product.brand}}</div>
+      <div class="product-price">${{product.price}}</div>
     </div>
   </div>
   <div class="action-buttons">
-    <div class="remove-button" tabindex="0" role="button">
+    <div class="remove-button" tabindex="0" role="button" routerLink="/products/{{product._id}}">
       <div>Details</div>
     </div>
-    <div class="remove-button" tabindex="0" role="button">
+    <div class="remove-button" tabindex="0" role="button" (click)="removeProduct()">
       <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/9a3d6d423c554e21a3f86a40439cd28af98e14633637cea34117815815cb3709?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
         class="remove-icon"
         alt=""
       />
-      <div>Remove Item</div>
+      <div>Remove Product</div>
     </div>
   </div>
 </div>
