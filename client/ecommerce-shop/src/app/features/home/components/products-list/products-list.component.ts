@@ -21,7 +21,7 @@ export class ProductsListComponent implements OnInit {
     const rows: Product[][] = [];
     for (let i = 0; i < products.length; i++) {
       if (i % 2 == 0) rows.push([products[i]]);
-      else rows[(i - 1 / 2)].push(products[i]);
+      else rows[(i - 1) / 2].push(products[i]);
     }
     return rows
   }

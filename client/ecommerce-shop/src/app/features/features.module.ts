@@ -6,6 +6,7 @@ import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
 import { AddProductModule } from './add-product/add-product.module';
 import { CartModule } from './cart/cart.module';
+import { EditModule } from './edit/edit.module';
 
 
 
@@ -14,6 +15,6 @@ import { CartModule } from './cart/cart.module';
   imports: [
     CommonModule,
   ],
-  exports: [HomeModule, ProductPageModule, RegisterModule, LoginModule, AddProductModule, CartModule]
+  exports: [HomeModule, ProductPageModule, RegisterModule, LoginModule, AddProductModule, CartModule, EditModule]
 })
 export class FeaturesModule { }

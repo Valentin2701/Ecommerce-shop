@@ -8,6 +8,7 @@ import { LoginComponent } from './features/login/login.component';
 import { LoggedInGuard } from './core/guards/routing.guard';
 import { IsGuestGuard } from './core/guards/guest.guard';
 import { CartComponent } from './features/cart/cart.component';
+import { EditComponent } from './features/edit/edit.component';
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "login", pathMatch: "full", component: LoginComponent, canActivate: [IsGuestGuard] },
   { path: "products/create", pathMatch: "full", component: AddProductComponent, canActivate: [LoggedInGuard] },
   { path: "products/cart", pathMatch: "full", component: CartComponent, canActivate: [LoggedInGuard] },
+  {path: "products/edit/:id", component: EditComponent, canActivate: [LoggedInGuard]},
   { path: "products/:id", component: ProductPageComponent },
 ];
 
