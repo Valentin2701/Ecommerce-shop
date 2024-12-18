@@ -1,6 +1,7 @@
 import express from "express";
 import { isAuth } from "../middlewares/authMiddleware.js";
 import * as productService from "../services/productService.js";
+import * as authService from "../services/authService.js"
 
 const router = express.Router();
 
@@ -103,6 +104,31 @@ router.post("/cart", isAuth, async (req, res, next) => {
     try{
         const product = await productService.getSingle(productId);
         if(user?._id != product.owner) await productService.addToCart(productId, user?._id);
+
+        res.status(200).end();
+    } catch(err){
+        next(err);
+    }
+});
+
+router.get("/cart", isAuth, async (req, res, next) => {
+    const userId = req.user?._id;
+    try{
+        const user = await authService.getUser(userId);
+        const products = await productService.getCart(user.cart);
+
+        res.status(200).json(products);
+    } catch(err){
+        next(err);
+    }
+});
+
+router.post("/cart/remove/:id", isAuth, async (req, res, next) => {
+    const productId = req.params.id;
+    const userId = req.user?._id;
+    try{
+        const user = await authService.getUser(userId);
+        if(user.cart.some(id => id == productId)) await productService.removeFromCart(productId, userId);
 
         res.status(200).end();
     } catch(err){

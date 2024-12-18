@@ -17,4 +17,8 @@ export const buy = (productId, userId) => Product.findByIdAndUpdate(productId, {
 
 export const addToCart = (productId, userId) => User.findByIdAndUpdate(userId, {$addToSet: {cart: productId}});
 
+export const getCart = (cart) => Product.find({ _id: { $in: cart } });
+
+export const removeFromCart = (productId, userId) => User.findByIdAndUpdate(userId, { $pull: { cart: productId } });
+
 export const search = (query) => Product.find({name: {$regex: query, $options: "i"}});
