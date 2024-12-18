@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart.component';
-import { ProductComponent } from './components/product/product.component';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { ProductComponent } from './components/product.component';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes: Routes = [{ path: "", component: CartComponent }];
 
 @NgModule({
   declarations: [
@@ -12,8 +12,9 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     ProductComponent
   ],
   imports: [
+    RouterModule.forChild(routes),
     CommonModule,
-    AppRoutingModule
+    RouterModule
   ]
 })
 export class CartModule { }

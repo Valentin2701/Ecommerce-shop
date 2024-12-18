@@ -6,8 +6,9 @@ import { ProductComponent } from './components/product/product.component';
 import { SearchComponent } from './components/search/search.component';
 import { CoreModule } from "../../core/core.module";
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes: Routes = [{ path: "", component: HomeComponent }];
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     SearchComponent
   ],
   imports: [
+    RouterModule.forChild(routes),
     CommonModule,
     CoreModule,
     AppRoutingModule

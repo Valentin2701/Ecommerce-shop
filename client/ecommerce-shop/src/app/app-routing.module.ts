@@ -1,27 +1,50 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
-import { ProductPageComponent } from './features/product-page/product-page.component';
-import { AddProductComponent } from './features/add-product/add-product.component';
-import { RegisterComponent } from './features/register/register.component';
-import { LoginComponent } from './features/login/login.component';
-import { LoggedInGuard } from './core/guards/routing.guard';
 import { IsGuestGuard } from './core/guards/guest.guard';
-import { CartComponent } from './features/cart/cart.component';
-import { EditComponent } from './features/edit/edit.component';
+import { LoggedInGuard } from './core/guards/routing.guard';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "register", pathMatch: "full", component: RegisterComponent, canActivate: [IsGuestGuard] },
-  { path: "login", pathMatch: "full", component: LoginComponent, canActivate: [IsGuestGuard] },
-  { path: "products/create", pathMatch: "full", component: AddProductComponent, canActivate: [LoggedInGuard] },
-  { path: "products/cart", pathMatch: "full", component: CartComponent, canActivate: [LoggedInGuard] },
-  {path: "products/edit/:id", component: EditComponent, canActivate: [LoggedInGuard]},
-  { path: "products/:id", component: ProductPageComponent },
+  { path: '', component: HomeComponent },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./features/register/register.module').then((m) => m.RegisterModule),
+    canActivate: [IsGuestGuard],
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./features/login/login.module').then((m) => m.LoginModule),
+    canActivate: [IsGuestGuard],
+  },
+  {
+    path: 'products/create',
+    loadChildren: () =>
+      import('./features/add-product/add-product.module').then((m) => m.AddProductModule),
+    canActivate: [LoggedInGuard],
+  },
+  {
+    path: 'products/edit/:id',
+    loadChildren: () =>
+      import('./features/edit/edit.module').then((m) => m.EditModule),
+    canActivate: [LoggedInGuard],
+  },
+  {
+    path: 'products/cart',
+    loadChildren: () =>
+      import('./features/cart/cart.module').then((m) => m.CartModule),
+    canActivate: [LoggedInGuard],
+  },
+  {
+    path: 'products/:id',
+    loadChildren: () =>
+      import('./features/product-page/product-page.module').then((m) => m.ProductPageModule),
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

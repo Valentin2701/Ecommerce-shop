@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditComponent } from './edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes: Routes = [{ path: "", component: EditComponent }];
 
 @NgModule({
   declarations: [
     EditComponent
   ],
   imports: [
+    RouterModule.forChild(routes),
     CommonModule,
     ReactiveFormsModule,
-    AppRoutingModule
-  ]
+    RouterModule
+  ],
 })
 export class EditModule { }

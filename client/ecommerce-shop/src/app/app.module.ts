@@ -15,9 +15,7 @@ export function initializeUserFactory(userService: UserService): () => Promise<v
 }
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
