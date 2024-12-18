@@ -21,11 +21,6 @@
     width: 100%;
     align-self: stretch;
   }
-  .thumbnail-gallery {
-    display: flex;
-    margin-top: 20px;
-    gap: 2px;
-  }
   .thumbnail {
     aspect-ratio: 1.11;
     object-fit: contain;
@@ -36,40 +31,30 @@
     color: rgba(0, 0, 0, 1);
     margin-top: 10px;
     font: 300 28px Inter, sans-serif;
-  }
-  .rating {
-    aspect-ratio: 6.33;
-    object-fit: contain;
-    object-position: center;
-    width: 200px;
-    max-width: 100%;
+    margin-left: 20px;
   }
   .product-code {
     color: rgba(104, 104, 104, 1);
     margin: 9px 0;
     font: 400 25px Inter, sans-serif;
+    margin-left: 15px;
   }
   .brand {
     color: rgba(104, 104, 104, 1);
     font: 400 25px Inter, sans-serif;
+    margin-left: 15px;
   }
   .price {
     color: rgba(80, 93, 104, 1);
     margin-top: 11px;
     font: 700 48px/78px Inter, sans-serif;
+    margin-left: 15px;
   }
   .product-description {
     color: rgba(161, 174, 183, 1);
     margin-top: 37px;
     font: 400 20px/35px Inter, sans-serif;
-  }
-  .size-chart {
-    aspect-ratio: 10.64;
-    object-fit: contain;
-    object-position: center;
-    width: 100%;
-    align-self: stretch;
-    margin-top: 150px;
+    margin-left: 15px;
   }
   .buy-button-wrapper {
     display: flex;
@@ -97,26 +82,6 @@
   .buy-button-text {
     position: relative;
   }
-  .wishlist-wrapper {
-    align-self: center;
-    display: flex;
-    margin-top: 31px;
-    width: 300px;
-    max-width: 100%;
-    gap: 16px;
-    color: rgba(161, 174, 183, 1);
-    font: 400 30px Ubuntu, sans-serif;
-  }
-  .wishlist-icon {
-    aspect-ratio: 1;
-    object-fit: contain;
-    object-position: center;
-    width: 40px;
-  }
-  .wishlist-text {
-    flex-grow: 1;
-    width: 200px;
-  }
   .visually-hidden {
     position: absolute;
     width: 1px;
@@ -126,4 +91,12 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+  }
+
+  .not-in-cart{
+    color: rgba(161, 174, 183, 1);
+    margin-top: 37px;
+    font: 400 30px/45px Inter, sans-serif;
+    margin-left: 15px;
+    align-self: center;
   }

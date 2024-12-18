@@ -30,7 +30,7 @@ export class ApiService {
     return this.http.post<void>(`${this.apiUrl}/edit/${productId}`, product);
   }
 
-  deleteProduct(productId: string) {
+  deleteProduct(productId: string | undefined) {
     return this.http.post<void>(`${this.apiUrl}/delete/${productId}`, {});
   }
 
@@ -40,5 +40,9 @@ export class ApiService {
 
   searchProducts(search: string) {
     return this.http.post<Product[]>(`${this.apiUrl}/search`, { search });
+  }
+
+  addProductToCart(productId: string | undefined) {
+    return this.http.post<void>(`${this.apiUrl}/cart`, { productId });
   }
 }

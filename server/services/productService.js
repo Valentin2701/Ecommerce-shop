@@ -1,4 +1,5 @@
 import { Product } from "../models/Product.js";
+import { User } from "../models/User.js";
 
 export const getAll = () => Product.find();
 
@@ -12,6 +13,8 @@ export const edit = (id, data) => Product.findByIdAndUpdate(id, data);
 
 export const remove = (id) => Product.findByIdAndDelete(id);
 
-export const buy = (ProductId, userId) => Product.findByIdAndUpdate(ProductId, {$push: {boughtBy: userId}});
+export const buy = (productId, userId) => Product.findByIdAndUpdate(productId, {$addToSet: {boughtBy: userId}});
+
+export const addToCart = (productId, userId) => User.findByIdAndUpdate(userId, {$addToSet: {cart: productId}});
 
 export const search = (query) => Product.find({name: {$regex: query, $options: "i"}});

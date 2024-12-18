@@ -24,7 +24,7 @@ router.get("/recent", async (req, res, next) => {
   }
 });
 
-router.get("/details/:id", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const productId = req.params.id;
     const product = await productService.getSingle(productId);
@@ -95,6 +95,19 @@ router.post("/search", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+router.post("/cart", isAuth, async (req, res, next) => {
+    const {productId} = req.body;
+    const user = req.user;
+    try{
+        const product = await productService.getSingle(productId);
+        if(user?._id != product.owner) await productService.addToCart(productId, user?._id);
+
+        res.status(200).end();
+    } catch(err){
+        next(err);
+    }
 });
 
 export { router };

@@ -38,7 +38,11 @@ const userSchema = new mongoose.Schema({
   ZIP: {
     type: String,
     required: true
-  }
+  },
+  cart: [{
+    type: mongoose.Types.ObjectId,
+    ref: "Product"
+  }]
 });
 userSchema.pre("save", async function (){
     this.password = await bcrypt.hash(this.password, 12);

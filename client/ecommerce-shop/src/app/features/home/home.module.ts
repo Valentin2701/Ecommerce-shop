@@ -5,6 +5,7 @@ import { ProductsListComponent } from './components/products-list/products-list.
 import { ProductComponent } from './components/product/product.component';
 import { SearchComponent } from './components/search/search.component';
 import { CoreModule } from "../../core/core.module";
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -17,7 +18,8 @@ import { CoreModule } from "../../core/core.module";
   ],
   imports: [
     CommonModule,
-    CoreModule
+    CoreModule,
+    AppRoutingModule
 ],
   exports: [
     HomeComponent

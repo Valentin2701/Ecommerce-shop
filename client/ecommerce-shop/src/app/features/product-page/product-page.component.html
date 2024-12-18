@@ -2,77 +2,56 @@
     <div class="product-wrapper">
       <img
         loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/ac170fabfbd3f15e76f1ea46898647f0e2eae8d452204ec12fa171b837558b73?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+        src="{{product?.image}}"
         class="product-main-image"
-        alt="Lyle & Scott Men's Short Sleeve Camo Pocket main product image"
+        alt="{{product?.name}} image"
       />
-      <div class="thumbnail-gallery" role="group" aria-label="Product image gallery">
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/7697bdfa63d9834b04c6d24a4e97b0326c341bac342dceeda26d099969664033?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
-          class="thumbnail"
-          alt="Product thumbnail 1"
-        />
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0311629a024ef5eb6bc2ad404c8f63be93f565fd647f8fa4b5a9558968540a9c?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
-          class="thumbnail"
-          alt="Product thumbnail 2"
-        />
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/0940b597c5f68304ce97dfd4951a9200b983f53105f55f89cc3fddc46606615a?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
-          class="thumbnail"
-          alt="Product thumbnail 3"
-        />
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/20b975d34ac2a7508a2b98da53f0bb0bff80557c53f3cd800e6508fcca829c94?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
-          class="thumbnail"
-          alt="Product thumbnail 4"
-        />
-      </div>
       <h1 class="product-title">
-        Lyle & Scott Men's Short Sleeve Camo Pocket
+        {{product?.name}}
       </h1>
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/0bfa6906239881f69681ee5a19aa3fc0149c0069f3de7a183a12e5137372678d?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
-        class="rating"
-        alt="Product rating"
-      />
-      <p class="product-code">Product Code: 2345678</p>
-      <p class="brand">Brand: Revolve</p>
-      <p class="price" aria-label="Price: 76 dollars">$76</p>
+      <p class="product-code">Product Code: {{product?.code}}</p>
+      <p class="brand">Brand: <b>{{product?.brand}}</b></p>
+      <p class="price" aria-label="Price: 76 dollars">${{product?.price}}</p>
       <p class="product-description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat incididunt ut labore.
+        {{product?.description}}
       </p>
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/a4d1771a3fb73cadd41d4f59c05ee594b1172198d52214a7f5413523c4911087?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
-        class="size-chart"
-        alt="Size chart"
-      />
-      <button class="buy-button-wrapper" tabindex="0">
+      <ng-container *ngIf="isLoggedIn">
+      <ng-container *ngIf="isOwner">
+        <button type="button" class="buy-button-wrapper" tabindex="0" routerLink="/products/edit/{{product?._id}}">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/f8d34c77ec45e6bfc6563033962debf3bbc922bc4bb55e8eb0ad992c8f2cacb4?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+              class="buy-button-bg"
+              alt=""
+            />
+            <span class="buy-button-text">Edit</span>
+          </button>
+          <button type="button" class="buy-button-wrapper" tabindex="0" (click)="remove()">
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/f8d34c77ec45e6bfc6563033962debf3bbc922bc4bb55e8eb0ad992c8f2cacb4?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
+              class="buy-button-bg"
+              alt=""
+            />
+            <span class="buy-button-text">Delete</span>
+          </button>
+        </ng-container>
+        <ng-container *ngIf="!isOwner">
+            <ng-container *ngIf="!isInCart">
+      <button type="button" class="buy-button-wrapper" tabindex="0" (click)="addToCart()">
         <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/f8d34c77ec45e6bfc6563033962debf3bbc922bc4bb55e8eb0ad992c8f2cacb4?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
           class="buy-button-bg"
           alt=""
         />
-        <span class="buy-button-text">Buy now!</span>
+        <span class="buy-button-text">Add to Cart</span>
       </button>
-      <button class="wishlist-wrapper" tabindex="0">
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/1aa89ec0ddba9a2db1d6ba586d73e65cf1eff4240492440b061d4312d159accb?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
-          class="wishlist-icon"
-          alt=""
-        />
-        <span class="wishlist-text">Add to wishlist</span>
-      </button>
+      </ng-container>
+      <ng-container *ngIf="isInCart">
+        <p class="not-in-cart">This product is already in the cart</p>
+      </ng-container>
+      </ng-container>
+      </ng-container>
     </div>
   </div>
