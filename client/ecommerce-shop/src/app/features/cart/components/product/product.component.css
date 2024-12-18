@@ -1,0 +1,76 @@
+.product-container {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    margin-top: 71px;
+    width: 100%;
+    flex-direction: column;
+    font-family: Inter, sans-serif;
+    padding: 10px 0;
+  }
+  .product-details {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+    justify-content: space-between;
+    margin: 0 19px 0 18px;
+  }
+  .product-image {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 115px;
+    max-width: 100%;
+  }
+  .product-info {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+  .product-title {
+    color: rgba(0, 0, 0, 1);
+    font-weight: 300;
+  }
+  .product-brand {
+    color: rgba(104, 104, 104, 1);
+    font-weight: 400;
+  }
+  .product-price {
+    color: rgba(80, 93, 104, 1);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 3;
+    margin-top: 22px;
+  }
+  .divider {
+    aspect-ratio: 10.64;
+    object-fit: contain;
+    object-position: center;
+    width: 320px;
+    margin-top: 32px;
+  }
+  .action-buttons {
+    align-self: center;
+    display: flex;
+    margin-top: 20px;
+    width: 241px;
+    max-width: 100%;
+    gap: 40px;
+    font-size: 11px;
+    color: rgba(161, 174, 183, 1);
+    font-weight: 400;
+    line-height: 24px;
+  }
+  .remove-button {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+  }
+  .remove-icon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 18px;
+    margin: auto 0;
+  }

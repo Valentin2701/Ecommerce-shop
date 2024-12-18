@@ -1,0 +1,114 @@
+.cart-header {
+    background-color: rgba(211, 211, 211, 1);
+    width: 100%;
+    font-size: 13px;
+    color: rgba(80, 93, 104, 1);
+    font-weight: 400;
+    text-align: center;
+    padding: 23px 20px;
+  }
+  .cart-summary {
+    display: flex;
+    max-width: 375px;
+    flex-direction: column;
+    font-family: Inter, sans-serif;
+    margin-left: 40%;
+  }
+  .subtotal-wrapper {
+    align-self: center;
+    display: flex;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 341px;
+    justify-content: space-between;
+  }
+  .subtotal-text {
+    font-size: 13px;
+    color: rgba(104, 104, 104, 1);
+    font-weight: 400;
+  }
+  .subtotal-amount {
+    font-size: 12px;
+    color: rgba(104, 104, 104, 1);
+    font-weight: 400;
+  }
+  .cart-content {
+    background-color: rgba(211, 211, 211, 1);
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    flex-direction: column;
+    font-family: Ubuntu, sans-serif;
+    padding: 18px 18px 41px;
+  }
+  .cart-logo {
+    aspect-ratio: 4.88;
+    object-fit: contain;
+    object-position: center;
+    width: 146px;
+    max-width: 100%;
+  }
+  .payment-info {
+    align-self: center;
+    display: flex;
+    margin-top: 71px;
+    width: 218px;
+    max-width: 100%;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    color: rgba(80, 93, 104, 1);
+    font-weight: 700;
+    text-align: right;
+  }
+  .payment-text {
+    align-self: stretch;
+    flex-grow: 1;
+    margin: auto 0;
+  }
+  .payment-icon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 31px;
+    align-self: stretch;
+    margin: auto 0;
+  }
+  .cards-icon {
+    aspect-ratio: 1.92;
+    object-fit: contain;
+    object-position: center;
+    width: 96px;
+    align-self: stretch;
+  }
+  .security-text {
+    color: rgba(80, 93, 104, 1);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    align-self: center;
+    margin-top: 9px;
+  }
+  .checkout-button {
+    background-color: rgba(66, 75, 90, 1);
+    align-self: center;
+    margin-top: 36px;
+    width: 100%;
+    max-width: 320px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 400;
+    text-align: center;
+    padding: 8px 70px;
+    cursor: pointer;
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
