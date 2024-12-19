@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { Product } from 'src/app/core/types/Product';
@@ -8,14 +8,11 @@ import { Product } from 'src/app/core/types/Product';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnChanges{
+  @Input() products: Product[] = [];
   public rows: Product[][] = [];
 
-  constructor(private productService: ApiService) { }
-
-  ngOnInit(): void {
-    this.productService.getRecentProducts().subscribe((prod: Product[]) => this.rows = this.getRows(prod));
-  }
+  constructor() {}
 
   private getRows(products: Product[]): Product[][] {
     const rows: Product[][] = [];
@@ -24,5 +21,9 @@ export class ProductsListComponent implements OnInit {
       else rows[(i - 1) / 2].push(products[i]);
     }
     return rows
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.rows = this.getRows(this.products);
   }
 }

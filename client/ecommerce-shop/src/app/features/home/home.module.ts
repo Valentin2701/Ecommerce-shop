@@ -7,6 +7,7 @@ import { SearchComponent } from './components/search/search.component';
 import { CoreModule } from "../../core/core.module";
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [{ path: "", component: HomeComponent }];
 
@@ -21,7 +22,8 @@ const routes: Routes = [{ path: "", component: HomeComponent }];
     RouterModule.forChild(routes),
     CommonModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
 ],
   exports: [
     HomeComponent

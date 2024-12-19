@@ -2,6 +2,6 @@
   class="flex overflow-hidden flex-col mx-auto w-full bg-white max-w-[480px]"
   role="main"
 >
-    <app-search />
-    <app-products-list />
+    <app-search (dataEmitter)="search($event)"/>
+    <app-products-list [products]="products"/>
 </div>
