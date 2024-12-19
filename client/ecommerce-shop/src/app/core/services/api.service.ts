@@ -23,15 +23,15 @@ export class ApiService {
   }
 
   createProduct(product: Product) {
-    return this.http.post<void>(`${this.apiUrl}/create`, product);
+    return this.http.post<void>(`${this.apiUrl}`, product);
   }
 
   editProduct(product: Product, productId: string) {
-    return this.http.post<void>(`${this.apiUrl}/edit/${productId}`, product);
+    return this.http.put<void>(`${this.apiUrl}/${productId}`, product);
   }
 
   deleteProduct(productId: string | undefined) {
-    return this.http.post<void>(`${this.apiUrl}/delete/${productId}`, {});
+    return this.http.delete<void>(`${this.apiUrl}/${productId}`, {});
   }
 
   buyProducts(products: Product[]) {
@@ -51,6 +51,6 @@ export class ApiService {
   }
 
   removeFromCart(productId: string){
-    return this.http.post<void>(`${this.apiUrl}/cart/remove/${productId}`, {});
+    return this.http.delete<void>(`${this.apiUrl}/cart/${productId}`, {});
   }
 }

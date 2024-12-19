@@ -27,7 +27,7 @@ router.get("/recent", async (req, res, next) => {
   }
 });
 
-router.post("/create", isAuth, async (req, res, next) => {
+router.post("/", isAuth, async (req, res, next) => {
   const data = req.body;
 
   try {
@@ -42,7 +42,7 @@ router.post("/create", isAuth, async (req, res, next) => {
   }
 });
 
-router.post("/edit/:id", isAuth, async (req, res, next) => {
+router.put("/:id", isAuth, async (req, res, next) => {
   const productId = req.params.id;
   const user = req.user;
   const data = req.body;
@@ -59,7 +59,7 @@ router.post("/edit/:id", isAuth, async (req, res, next) => {
   }
 });
 
-router.post("/delete/:id", isAuth, async (req, res, next) => {
+router.delete("/:id", isAuth, async (req, res, next) => {
   const user = req.user;
   const productId = req.params.id;
   const product = await productService.getSingle(
@@ -126,7 +126,7 @@ router.get("/cart", isAuth, async (req, res, next) => {
   }
 });
 
-router.post("/cart/remove/:id", isAuth, async (req, res, next) => {
+router.delete("/cart/:id", isAuth, async (req, res, next) => {
   const productId = req.params.id;
   const userId = req.user?._id;
   try {
