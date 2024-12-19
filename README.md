@@ -86,4 +86,4 @@ src/
 - DELETE /cart/:id - Remove an item from the cart (User).
 
 ## 🛡️ License
-This project is licensed under the MIT License. See the **LICENSE** file for more details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
