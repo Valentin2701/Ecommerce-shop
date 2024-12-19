@@ -13,11 +13,11 @@ export const edit = (id, data) => Product.findByIdAndUpdate(id, data);
 
 export const remove = (id) => Product.findByIdAndDelete(id);
 
-export const buy = (productId, userId) => Product.findByIdAndUpdate(productId, {$addToSet: {boughtBy: userId}});
+export const buy = (productIds, userId) => Product.updateMany({_id: {$in: productIds}}, {$addToSet: {boughtBy: userId}});
 
 export const addToCart = (productId, userId) => User.findByIdAndUpdate(userId, {$addToSet: {cart: productId}});
 
-export const getCart = (cart) => Product.find({ _id: { $in: cart } });
+export const getCart = (userId) => User.findById(userId).populate("cart");
 
 export const removeFromCart = (productId, userId) => User.findByIdAndUpdate(userId, { $pull: { cart: productId } });
 

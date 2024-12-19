@@ -34,8 +34,8 @@ export class ApiService {
     return this.http.post<void>(`${this.apiUrl}/delete/${productId}`, {});
   }
 
-  buyProduct(productId: string) {
-    return this.http.post<void>(`${this.apiUrl}/buy/${productId}`, {});
+  buyProducts(products: Product[]) {
+    return this.http.post<void>(`${this.apiUrl}/buy`, {products});
   }
 
   searchProducts(search: string) {

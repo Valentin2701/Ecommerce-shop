@@ -33,19 +33,21 @@ const userSchema = new mongoose.Schema({
   },
   number: {
     type: String,
-    required: true
+    required: true,
   },
   ZIP: {
     type: String,
-    required: true
+    required: true,
   },
-  cart: [{
-    type: mongoose.Types.ObjectId,
-    ref: "Product"
-  }]
+  cart: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
 });
-userSchema.pre("save", async function (){
-    this.password = await bcrypt.hash(this.password, 12);
+userSchema.pre("save", async function () {
+  this.password = await bcrypt.hash(this.password, 12);
 });
 
 const User = mongoose.model("User", userSchema);

@@ -1,7 +1,9 @@
 import express from "express";
+import mongoose from "mongoose";
 import { isAuth } from "../middlewares/authMiddleware.js";
 import * as productService from "../services/productService.js";
-import * as authService from "../services/authService.js"
+import * as authService from "../services/authService.js";
+import { ObjectId } from "bson";
 
 const router = express.Router();
 
@@ -25,22 +27,14 @@ router.get("/recent", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => {
-  try {
-    const productId = req.params.id;
-    const product = await productService.getSingle(productId);
-
-    res.json(product);
-  } catch (err) {
-    next(err);
-  }
-});
-
 router.post("/create", isAuth, async (req, res, next) => {
   const data = req.body;
 
   try {
-    await productService.create({ ...data, owner: req.user._id });
+    await productService.create({
+      ...data,
+      owner: req.user?._id,
+    });
 
     res.status(200).end();
   } catch (err) {
@@ -52,9 +46,12 @@ router.post("/edit/:id", isAuth, async (req, res, next) => {
   const productId = req.params.id;
   const user = req.user;
   const data = req.body;
-  const product = await productService.getSingle(productId);
+  const product = await productService.getSingle(
+    ObjectId.createFromHexString(productId)
+  );
   try {
-    if (product.owner == user?._id) await productService.edit(productId, data);
+    if (product.owner == user?._id)
+      await productService.edit(ObjectId.createFromHexString(productId), data);
 
     res.status(200).end();
   } catch (err) {
@@ -65,9 +62,12 @@ router.post("/edit/:id", isAuth, async (req, res, next) => {
 router.post("/delete/:id", isAuth, async (req, res, next) => {
   const user = req.user;
   const productId = req.params.id;
-  const product = await productService.getSingle(productId);
+  const product = await productService.getSingle(
+    ObjectId.createFromHexString(productId)
+  );
   try {
-    if (product.owner == user?._id) await productService.remove(productId);
+    if (product.owner == user?._id)
+      await productService.remove(ObjectId.createFromHexString(productId));
 
     res.status(200).end();
   } catch (err) {
@@ -75,16 +75,18 @@ router.post("/delete/:id", isAuth, async (req, res, next) => {
   }
 });
 
-router.post("/buy/:id", isAuth, async (req, res, next) => {
-    const productId = req.params.id;
-    const userId = req.user?._id;
-    try{
-        await productService.buy(productId, userId);
+router.post("/buy", isAuth, async (req, res, next) => {
+  const { products } = req.body;
+  const userId = req.user?._id;
+  try {
+    const productIds = products.map(product => ObjectId.createFromHexString(product._id));
+    await productService.buy(productIds, userId);
+    productIds.forEach(async (id) => await productService.removeFromCart(id, userId));
 
-        res.status(200).end();
-    } catch(err){
-        next(err);
-    }
+    res.status(200).end();
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post("/search", async (req, res, next) => {
@@ -99,41 +101,58 @@ router.post("/search", async (req, res, next) => {
 });
 
 router.post("/cart", isAuth, async (req, res, next) => {
-    const {productId} = req.body;
-    const user = req.user;
-    try{
-        const product = await productService.getSingle(productId);
-        if(user?._id != product.owner) await productService.addToCart(productId, user?._id);
+  const productId = req.body.productId;
+  const user = req.user;
+  try {
+    const product = await productService.getSingle(productId);
+    if (user?._id != product.owner)
+      await productService.addToCart(productId, user?._id);
 
-        res.status(200).end();
-    } catch(err){
-        next(err);
-    }
+    res.status(200).end();
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.get("/cart", isAuth, async (req, res, next) => {
-    const userId = req.user?._id;
-    try{
-        const user = await authService.getUser(userId);
-        const products = await productService.getCart(user.cart);
+  const userId = req.user?._id;
+  try {
+    const user = await productService.getCart(userId);
+    console.log(user.cart);
 
-        res.status(200).json(products);
-    } catch(err){
-        next(err);
-    }
+    res.status(200).json(user.cart);
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post("/cart/remove/:id", isAuth, async (req, res, next) => {
-    const productId = req.params.id;
-    const userId = req.user?._id;
-    try{
-        const user = await authService.getUser(userId);
-        if(user.cart.some(id => id == productId)) await productService.removeFromCart(productId, userId);
+  const productId = req.params.id;
+  const userId = req.user?._id;
+  try {
+    const user = await authService.getUser(userId);
+    if (user.cart.some((id) => id == productId))
+      await productService.removeFromCart(
+        ObjectId.createFromHexString(productId),
+        userId
+      );
 
-        res.status(200).end();
-    } catch(err){
-        next(err);
-    }
+    res.status(200).end();
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const productId = req.params.id;
+    console.log("Ran this route");
+    const product = await productService.getSingle(productId);
+
+    res.json(product);
+  } catch (err) {
+    next(err);
+  }
 });
 
 export { router };

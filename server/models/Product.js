@@ -44,7 +44,7 @@ const productSchema = new mongoose.Schema(
     },
     boughtBy: [
       {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
     ],

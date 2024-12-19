@@ -1,5 +1,6 @@
 import * as jwt from "../lib/jsonwebtoken.js";
 import { SECRET } from "../env/env.js";
+import { getCart } from "../services/productService.js";
 
 export const authMiddleware = async (req, res, next) => {
   const token = req.cookies["auth"];

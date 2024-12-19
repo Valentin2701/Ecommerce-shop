@@ -1,8 +1,8 @@
 <div class="cart-summary">
   <div class="cart-header">Shopping cart</div>
   <div class="subtotal-wrapper">
-    <div class="subtotal-text">Subtotal( 1 item)</div>
-    <div class="subtotal-amount">$42.14</div>
+    <div class="subtotal-text">Subtotal( {{products.length}} item)</div>
+    <div class="subtotal-amount">${{sum}}</div>
   </div>
   <div class="cart-content">
     <img
@@ -10,6 +10,7 @@
       src="https://cdn.builder.io/api/v1/image/assets/TEMP/cd4f9e073459c43b4d136b7372d7322d3ff23b3515e41535057623e7ab92f278?placeholderIfAbsent=true&apiKey=637d52b7836245638b3cb5f84c1adefc"
       class="cart-logo"
       alt="Store logo"
+      routerLink="/"
     />
     <ng-container *ngFor="let product of products">
         <app-product [product]="product"/>
@@ -31,5 +32,5 @@
     </div>
     <div class="security-text">100% Safe and Secure</div>
   </div>
-  <button class="checkout-button">Continue to checkout</button>
+  <button class="checkout-button" (click)="buyProducts()">Continue to checkout</button>
 </div>
