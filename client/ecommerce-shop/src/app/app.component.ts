@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './core/services/user.service';
+import { Observable } from 'rxjs';
+import { LoadingService } from './core/services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,13 @@ import { UserService } from './core/services/user.service';
 })
 export class AppComponent implements OnInit{
   title = 'ecommerce-shop';
+  isLoading: Observable<boolean>;
 
-  sidebarOpen = true;
+  sidebarOpen: boolean = true;
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private loadingService: LoadingService){
+    this.isLoading = this.loadingService.loading$;
+  }
 
   ngOnInit(): void {
       this.userService.initializeUser();

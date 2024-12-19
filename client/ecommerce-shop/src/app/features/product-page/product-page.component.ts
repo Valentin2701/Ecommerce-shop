@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/core/services/api.service';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { Product } from 'src/app/core/types/Product';
 import { User } from 'src/app/core/types/User';
@@ -17,8 +18,7 @@ export class ProductPageComponent implements OnInit {
   isInCart: boolean | undefined = false;
   isBought: boolean | undefined = false;
 
-  constructor(private router: Router, private routerActivate: ActivatedRoute, private productService: ApiService, private userService: UserService) { }
-  //TODO: edit page, cart page, buy functionality, search functionality, lazy loading, etc.
+  constructor(private router: Router, private routerActivate: ActivatedRoute, private productService: ApiService, private userService: UserService, private loadingService: LoadingService) { }
   addToCart() {
     this.productService.addProductToCart(this.product?._id).subscribe(() => {
       this.router.navigate([`/products/${this.product?._id}`], { queryParamsHandling: 'merge', skipLocationChange: true }).then(() => {
@@ -34,6 +34,7 @@ export class ProductPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadingService.show();
     this.routerActivate.paramMap.subscribe(params => {
       const id: string = params.get('id') as string;
       this.productService.getSingleProduct(id).subscribe(product => {
@@ -44,6 +45,7 @@ export class ProductPageComponent implements OnInit {
         this.isInCart = user?.cart.some(productId => productId == this.product?._id);
         this.isBought = product.boughtBy?.some(userId => userId == user?._id);
       });
+      this.loadingService.hide();
     });
   }
 }
