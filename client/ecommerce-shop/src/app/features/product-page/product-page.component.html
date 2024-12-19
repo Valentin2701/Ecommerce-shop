@@ -12,6 +12,9 @@
       <p class="product-code">Product Code: {{product?.code}}</p>
       <p class="brand">Brand: <b>{{product?.brand}}</b></p>
       <p class="price" aria-label="Price: 76 dollars">${{product?.price}}</p>
+      <p class="product-description" *ngIf="isBought">
+        (You have already bought this product)
+      </p>
       <p class="product-description">
         {{product?.description}}
       </p>

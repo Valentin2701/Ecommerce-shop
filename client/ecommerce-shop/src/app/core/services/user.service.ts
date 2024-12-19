@@ -32,7 +32,7 @@ export class UserService {
   }
 
   getUser(){
-    return this.user$$.value
+    return this.user$$.value;
   }
 
   register(userData: any) {

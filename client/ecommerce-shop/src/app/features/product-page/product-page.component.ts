@@ -15,6 +15,7 @@ export class ProductPageComponent implements OnInit {
   isLoggedIn: boolean = false;
   isOwner: boolean = false;
   isInCart: boolean | undefined = false;
+  isBought: boolean | undefined = false;
 
   constructor(private router: Router, private routerActivate: ActivatedRoute, private productService: ApiService, private userService: UserService) { }
   //TODO: edit page, cart page, buy functionality, search functionality, lazy loading, etc.
@@ -41,6 +42,7 @@ export class ProductPageComponent implements OnInit {
         this.isLoggedIn = !!user;
         this.isOwner = this.product?.owner == user?._id;
         this.isInCart = user?.cart.some(productId => productId == this.product?._id);
+        this.isBought = product.boughtBy?.some(userId => userId == user?._id);
       });
     });
   }
