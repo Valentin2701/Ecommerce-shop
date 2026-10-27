@@ -9,11 +9,14 @@ import { EditModule } from './edit/edit.module';
 import { AddProductModule } from './add-product/add-product.module';
 import { ProductPageModule } from './product-page/product-page.module';
 import { CartModule } from './cart/cart.module';
+import { FiqraComponent } from './fiqra/fiqra.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    FiqraComponent
+  ],
   imports: [
     CommonModule,
     AppRoutingModule,

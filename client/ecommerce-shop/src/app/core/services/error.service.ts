@@ -15,7 +15,6 @@ export class ErrorService {
     setTimeout(() => this.clearError(), 4000);
   }
 
-  // Method to clear the current error
   clearError(): void {
     this.error$$.next(null);
   }
